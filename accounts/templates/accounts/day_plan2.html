@@ -1,0 +1,119 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "./css/temp.css" %}" type="text/css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-a11y="true"></script>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <script type="text/javascript">
+        window.onload = function() {
+            
+            let sidebar = document.querySelector(".sidebar");
+            let sidebarBtn = document.querySelector(".sidebarBtn");
+            sidebarBtn.onclick = function() {
+                sidebar.classList.toggle("active");
+                if(sidebar.classList.contains("active")){
+                    sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+                }else
+                    sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+            }
+
+        }
+    </script>
+</head>
+<body>
+
+
+<div class="sidebar">
+    <div class="logo-details">
+        <i class='bx bxs-leaf' ></i>
+        <span class="logo_name">NOURISH-MEND</span>
+    </div>
+    <ul class="nav-links">
+        <li></li>
+        <li>
+            <a href="#" class="active">
+                <i class='bx bx-id-card' ></i>
+                <span class="links_name">Survey</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-list-ul' ></i>
+                <span class="links_name">Updating your info</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bxs-bowl-hot' ></i>
+                <span class="links_name">Diet and Calorie Plan</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bxs-food-menu'></i>
+                <span class="links_name">Daily Logs</span>
+            </a>
+        </li>
+        <li class="log_out">
+            <a href="#">
+                <i class='bx bx-log-out'></i>
+                <span class="links_name">Log out</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<section class="home-section">
+    <nav>
+        <div class="sidebar-button">
+            <i class='bx bx-menu sidebarBtn'></i>
+            <span class="dashboard">Dashboard</span>
+        </div>
+        <div class="profile-details">
+            <img src="" alt="">
+            <span class="admin_name">User Name</span>
+            <i class='bx bx-chevron-down' ></i>
+        </div>
+    </nav>
+    <div class="aka">
+        <br></br>
+        <br></br>
+        
+          <ul class="responsive-table">
+            <li class="table-header">
+              <div class="col col-1">Meal</div>
+              <div class="col col-1">Name</div>
+              <div class="col col-3">Recipe</div>
+              
+            </li>
+
+<li class="table-row">
+              <div class="col col-1" data-label="Registration Id">Breakfast</div>
+              <div class="col col-1" data-label="Registration Id">Easy Mango-Blackberry Smoothie Recipe</div>
+              <div class="col col-3" data-label="Profile"><a href="{% url 'rec' %}">View</a></div>
+             
+            </li>
+            <li class="table-row">
+                <div class="col col-1" data-label="Registration Id">Lunch</div>
+                <div class="col col-1" data-label="Registration Id">Lemon Ricotta Matzo Brei</div>
+                <div class="col col-3" data-label="Profile"><a href="{% url 'rec' %}">View</a></div>
+               
+              </li>
+              <li class="table-row">
+                <div class="col col-1" data-label="Registration Id">Dinner</div>
+                <div class="col col-1" data-label="Registration Id">Ramp Pesto Pasta</div>
+                <div class="col col-3" data-label="Profile"><a href="{% url 'rec' %}">View</a></div>
+               
+              </li>
+            
+        
+          </ul>
+        </div> 
+    </section>
+</body>
+</html>

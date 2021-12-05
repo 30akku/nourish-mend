@@ -1,0 +1,149 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "./css/temp.css" %}" type="text/css"/>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-a11y="true"></script>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <script type="text/javascript">
+        window.onload = function() {
+            
+            let sidebar = document.querySelector(".sidebar");
+            let sidebarBtn = document.querySelector(".sidebarBtn");
+            sidebarBtn.onclick = function() {
+                sidebar.classList.toggle("active");
+                if(sidebar.classList.contains("active")){
+                    sidebarBtn.classList.replace("bx-menu" ,"bx-menu-alt-right");
+                }else
+                    sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+            }
+
+        }
+    </script>
+</head>
+<body>
+
+
+<div class="sidebar">
+    <div class="logo-details">
+        <i class='bx bxs-leaf' ></i>
+        <span class="logo_name">NOURISH-MEND</span>
+    </div>
+    <ul class="nav-links">
+        <li></li>
+        <li>
+            <a href="{% url "upload"%}" class="active">
+                <i class='bx bx-id-card' ></i>
+                <span class="links_name">Survey</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url "upload"%}">
+                <i class='bx bx-list-ul' ></i>
+                <span class="links_name">Updating your info</span>
+            </a>
+        </li>
+        <li>
+            <a href="{% url "days"%}">
+                <i class='bx bxs-bowl-hot' ></i>
+                <span class="links_name">Diet and Calorie Plan</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bxs-food-menu'></i>
+                <span class="links_name">Daily Logs</span>
+            </a>
+        </li>
+        <li class="log_out">
+            <a href="{% url 'logout'%}">
+                <i class='bx bx-log-out'></i>
+                <span class="links_name">Log out</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<section class="home-section">
+    <nav>
+        <div class="sidebar-button">
+            <i class='bx bx-menu sidebarBtn'></i>
+            <span class="dashboard">Dashboard</span>
+        </div>
+        <div class="profile-details">
+            <img src="{% static 'images/log.png'%}" alt="">
+            <span class="admin_name">{{request.user}}</span>
+            <i class='bx bx-chevron-down' ></i>
+        </div>
+    </nav>
+<div class="home-content">
+    <div class="overview-boxes">
+
+
+    <div class="s-b">
+        <div class="r-s box" >
+            <div class="title">Enter your details</div>
+            <div class="s-d" style="width:700px; display: flex; resize: both;
+            overflow: auto;">
+                <form method ="POST" action="" id="contact-form", enctype="multipart/form-data" autocomplete="off">
+                    {% csrf_token %}
+                    <input type="hidden" name="contact_number">
+                    <label>Full Name</label>
+                    <br>
+                    {{form.fname}}
+                    <br>
+                    <label>Weight(in lbs)</label>
+                    <br>
+                    {{form.weight}}
+                    <br>
+                    <div class="row">
+                        <label>Height(in inches)</label>
+                        <br>
+                        {{form.height}}
+                        <br>
+                        <br>
+                        <div class="col-half">
+                            <h4>Age</h4>
+                            <div class="input-group">
+                                {{form.age}}
+                            </div>
+                        </div>
+                        <div class="col-half" style = "width: 200px;">
+                            <h4>Gender</h4>
+                            {{form.gender1}}
+                        </div>
+                        <br>
+                        <br>
+                    </div>
+                    <label>Disorder</label>
+                    <br>
+                    {{form.disorder}}
+                    <br>
+                    <br>
+                    <div class="row">
+                        <label>Is there any special diet that you follow?</label>
+                        <br>
+                        {{form.diet}}
+                        <br>
+
+                        <br>
+
+                    </div>
+                    <br>
+                    <div class="row">
+                        <input type="submit">
+                </form>
+        </div>
+
+
+    </div>
+</div>
+    </div>
+</section>
+
+</body>
+</html>
